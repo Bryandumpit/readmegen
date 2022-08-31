@@ -111,17 +111,19 @@ const usage = useSteps => {
 
 // TODO: Create a function to write README file
 function writeToFile(fileContent) {
-    
-    fs.writeFile('./dist/README.md',fileContent,err=>{
-        if (err){
-            reject(err);
-            return;
-        }
-        resolve({
-            ok: true,
-            message: 'File created!'
+    return new Promise((resolve,rejects) => {
+        fs.writeFile('./dist/README.md',fileContent, err=>{
+            if (err){
+                rejects(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File created!'
+            })
         })
     })
+    
 }
 
 // TODO: Create a function to initialize app
@@ -130,9 +132,14 @@ function init() {
         .then(installation)
         .then(usage)
         .then(answers=>{
+            // return console.log(answers)
             return generateMarkdown(answers);
         })
-        .then(writeToFile(markdown))
+        .then(markdown => {
+            return writeToFile(markdown)})
+        .then(writeFileResponse=>{
+            console.log(writeFileResponse)
+        })
         .catch(err=>{
             console.log(err);
         })
