@@ -113,12 +113,12 @@ ${renderLicenseBadge(projectInfo.license)}
   ${projectInfo.description}
 ## Table of Contents:
   * [Project Title](#${projectInfo.title})
-  * [Description](##Description)
-  * [Installation](##Installation)
-  * [Usage](##Usage)
-  * [Tests](##Tests)
-  * [Contributions and Questions](##Contributions-and-Questions)
-  * [License](##License)
+  * [Description](#description)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Tests](#tests)
+  * [Contributions and Questions](#contributions-and-questions)
+  * [License](#license)
 ## Installation:
   Please follow the steps below for installation:
   ${installationHandler(steps)}
