@@ -52,20 +52,67 @@ function renderLicenseSection(license) {
   }  
 }
 
+const installationHandler = steps => {
+  console.log(steps)
+  const installationSteps = steps.filter(step => {
+    if (step.install) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+  .map(({install})=>{
+    return `* ${install}`
+  })
+return `${installationSteps.join('\n  ')}
+`
+}
 
+const usageHandler = steps => {
+  console.log(steps)
+  const usageSteps = steps.filter(step => {
+    if (step.usage) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+  .map(({usage})=>{
+    return `* ${usage}`
+  })
+return `${usageSteps.join('\n  ')}
+`
+}
 
+const testHandler = steps => {
+  console.log(steps)
+  const testSteps = steps.filter(step => {
+    if (step.test) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+  .map(({test})=>{
+    return `* ${test}`
+  })
+return `${testSteps.join('\n  ')}
+`
+}
 
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   
+  const {steps,...projectInfo} = data
+  
   return `
-# ${data.title} 
-${renderLicenseBadge(data.license)} 
+# ${projectInfo.title} 
+${renderLicenseBadge(projectInfo.license)} 
 ## Description:
-  ${data.description}
+  ${projectInfo.description}
 ## Table of Contents:
-  * [Project Title](#${data.title})
+  * [Project Title](#${projectInfo.title})
   * [Description](##Description)
   * [Installation](##Installation)
   * [Usage](##Usage)
@@ -74,18 +121,18 @@ ${renderLicenseBadge(data.license)}
   * [License](##License)
 ## Installation:
   Please follow the steps below for installation:
-  ${JSON.stringify(data.steps)}
+  ${installationHandler(steps)}
 ## Usage:
   Please follow the steps below for usage:
-  ${JSON.stringify(data.steps)}
+  ${usageHandler(steps)}
 ## Tests:
   If you would like to run tests on the application, please follow the steps below:
-  ${JSON.stringify(data.steps)}
+  ${testHandler(steps)}
 ## Contributions and Questions:
   If you would like to contribute or if you have any questions please visit my GitHub page or feel free to email me. Please see the links below:
-  * [My GitHub](https:github.com/${data.github}/)
-  * [e-mail me at ${data.email}](mailto:${data.email})
-${renderLicenseSection(data.license)}
+  * [My GitHub](https:github.com/${projectInfo.github}/)
+  * [e-mail me at ${projectInfo.email}](mailto:${projectInfo.email})
+${renderLicenseSection(projectInfo.license)}
   `;
 }
 

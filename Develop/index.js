@@ -123,7 +123,32 @@ const usage = useSteps => {
         }
     })
 }
-
+const test = testSteps => {
+    if (!testSteps.steps) {
+        testSteps.steps=[];
+    }
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'test',
+            message: 'Please provide one step for testing (you will be prompted if there are next steps)'
+        },
+        {
+            type: 'confirm',
+            name: 'confirmNext',
+            message: 'Is there a next step for testing (false if no further steps)',
+            default: false
+        }
+    ])
+    .then(testingSteps => {
+        testSteps.steps.push(testingSteps);
+        if (testingSteps.confirmNext) {
+            return test(testSteps);
+        } else {
+            return testSteps;
+        }
+    })
+}
 // TODO: Create a function to write README file
 function writeToFile(fileContent) {
     return new Promise((resolve,rejects) => {
@@ -146,7 +171,9 @@ function init() {
     questions()
         .then(installation)
         .then(usage)
+        .then(test)
         .then(answers=>{
+            console.log(answers)
             // return console.log(answers)
             return generateMarkdown(answers);
         })
