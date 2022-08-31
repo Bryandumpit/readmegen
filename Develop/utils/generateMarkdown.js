@@ -52,6 +52,15 @@ function renderLicenseSection(license) {
   }  
 }
 
+function renderLicenseInToc(license){
+  if (license){
+    return`* [License](#license)
+    `
+  } else {
+    return ''
+  }
+}
+
 const installationHandler = steps => {
   console.log(steps)
   const installationSteps = steps.filter(step => {
@@ -118,7 +127,7 @@ ${renderLicenseBadge(projectInfo.license)}
   * [Usage](#usage)
   * [Tests](#tests)
   * [Contributions and Questions](#contributions-and-questions)
-  * [License](#license)
+  ${renderLicenseInToc(projectInfo.license)}
 ## Installation:
   Please follow the steps below for installation:
   ${installationHandler(steps)}
