@@ -49,9 +49,11 @@ function renderLicenseSection(license) {
 `
   } else {
     return ''
-  }
-  
+  }  
 }
+
+
+
 
 
 // TODO: Create a function to generate markdown for README
@@ -63,19 +65,26 @@ ${renderLicenseBadge(data.license)}
 ## Description:
   ${data.description}
 ## Table of Contents:
-  insert table of contents, links/bookmarks
+  * [Project Title](#${data.title})
+  * [Description](##Description)
+  * [Installation](##Installation)
+  * [Usage](##Usage)
+  * [Tests](##Tests)
+  * [Contributions andQuestions](##Contributions-and-Questions)
+  * [License](##License)
 ## Installation:
-  ${data.steps}
+  Please follow the steps below for installation:
+  ${JSON.stringify(data.steps)}
 ## Usage:
-  ${data.steps}
-## Contribution:
-
+  Please follow the steps below for usage:
+  ${JSON.stringify(data.steps)}
 ## Tests:
-If you would like to run tests on the application, please follow the steps below:
-  ${data.steps}
-## Questions
-  If you have any questions, please feel free to contact me at ${data.email}
-
+  If you would like to run tests on the application, please follow the steps below:
+  ${JSON.stringify(data.steps)}
+## Contributions and Questions:
+  If you would like to contribute or if you have any questions please visit my GitHub page or feel free to email me. Please see the links below:
+  * [My GitHub](https:github.com/${data.github}/)
+  * [e-mail me at ${data.email}](mailto:${data.email})
 ${renderLicenseSection(data.license)}
   `;
 }

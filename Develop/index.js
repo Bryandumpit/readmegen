@@ -51,13 +51,23 @@ const questions = (answers) =>{
             }
         },
         {
+            type: 'confirm',
+            name: 'confirmLicense',
+            message: 'Do you want to add a license to your project?',
+            default: false
+        },
+        {
             type: 'list',
             name: 'license',
             message: 'Which open source license is applicable to your application?',
-            choices: ['MIT License', 'GNU GPLv3', 'ISC License', 'Apache License 2.0']
-        },
+            choices: ['MIT License', 'GNU GPLv3', 'ISC License', 'Apache License 2.0'],
+            when (answers) {
+                return answers.confirmLicense === true;
+            }
+        }
     ])
 }
+
 
 const installation = installSteps => {
     if (!installSteps.steps) {
