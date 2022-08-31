@@ -54,7 +54,11 @@ const questions = (answers) =>{
     ])
 }
 
-const installation = instructions => {
+const installation = installSteps => {
+    if (!installSteps.steps) {
+        installSteps.steps=[];
+    }
+
     return inquirer.prompt([
         {
             type:'input',
@@ -68,11 +72,39 @@ const installation = instructions => {
             default: false
         }
     ])
-    .then(installSteps => {
-        if (installSteps.confirmNext) {
-            return installation(instructions);
+    .then(installationSteps => {
+        installSteps.steps.push(installationSteps);
+        if (installationSteps.confirmNext) {
+            return installation(installSteps);
         } else {
-            return installSteps
+            return installSteps;
+        }
+    })
+}
+
+const usage = useSteps => {
+    if (!useSteps.steps) {
+        useSteps.steps=[];
+    }
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'Please provide one step for usage (you will be prompted if there are next steps)'
+        },
+        {
+            type: 'confirm',
+            name: 'confirmNext',
+            message: 'Is there a next step for usage (false if no further steps)',
+            default: false
+        }
+    ])
+    .then(usageSteps => {
+        useSteps.steps.push(usageSteps);
+        if (usageSteps.confirmNext) {
+            return usage(useSteps);
+        } else {
+            return useSteps;
         }
     })
 }
@@ -96,6 +128,7 @@ function writeToFile(fileContent) {
 function init() {
     questions()
         .then(installation)
+        .then(usage)
         .then(answers=>{
             return console.log(answers)
         })
