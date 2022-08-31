@@ -20,17 +20,33 @@ function renderLicenseBadge(license) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  licenseLink = ''
+  switch(license){
+    case 'MIT License':
+      licenseBadge = '[MIT License](https://choosealicense.com/licenses/mit/)';
+      break;
+    case 'GNU GPLv3':
+      licenseBadge = '[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)';
+      break;
+    case 'ISC license':
+      licenseBadge = '[ISC License](https://choosealicense.com/licenses/isc/)';
+      break;
+    case 'Apache License 2.0':
+      licenseBadge = '[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)';
+  }
+  return licenseLink;
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   if (license){
     return `
-  ##License:
-  Please click the link to see details about your license
-  [licensename](${renderLicenseLink(license)})
-  `
+      ##License:
+        Please click the link to see details about your license
+        ${renderLicenseLink(license)}
+    `
   } else {
     return ''
   }
@@ -49,9 +65,6 @@ function generateMarkdown(data) {
       ${data.instruction}
     ## Usage:
       ${data.usage}
-    
-    ${renderLicenseSection(data.license)}
-
     ## Contribution:
 
     ## Tests:
@@ -60,6 +73,8 @@ function generateMarkdown(data) {
 
     ## Questions
       If you have any questions, please feel free to contact me at ${data.email}
+    
+    ${renderLicenseSection(data.license)}
   `;
 }
 
