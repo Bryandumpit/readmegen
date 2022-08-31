@@ -24,16 +24,16 @@ function renderLicenseLink(license) {
   licenseLink = ''
   switch(license){
     case 'MIT License':
-      licenseBadge = '[MIT License](https://choosealicense.com/licenses/mit/)';
+      licenseLink = '[MIT License](https://choosealicense.com/licenses/mit/)';
       break;
     case 'GNU GPLv3':
-      licenseBadge = '[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)';
+      licenseLink = '[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)';
       break;
     case 'ISC license':
-      licenseBadge = '[ISC License](https://choosealicense.com/licenses/isc/)';
+      licenseLink = '[ISC License](https://choosealicense.com/licenses/isc/)';
       break;
     case 'Apache License 2.0':
-      licenseBadge = '[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)';
+      licenseLink = '[Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)';
   }
   return licenseLink;
 }
@@ -43,34 +43,36 @@ function renderLicenseLink(license) {
 function renderLicenseSection(license) {
   if (license){
     return `
-      ##License:
-        Please click the link to see details about your license
-        ${renderLicenseLink(license)}
-    `
+## License:
+  Please click the link to see details about your license
+  ${renderLicenseLink(license)}
+`
   } else {
     return ''
   }
   
 }
 
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  
   return `
-# ${data.title} ${renderLicenseBadge(data.license)} 
+# ${data.title} 
+${renderLicenseBadge(data.license)} 
 ## Description:
   ${data.description}
 ## Table of Contents:
-  * insert table of contents, links/bookmarks
+  insert table of contents, links/bookmarks
 ## Installation:
-  ${data.steps.install}
+  ${data.steps}
 ## Usage:
-  ${data.steps.usage}
+  ${data.steps}
 ## Contribution:
 
 ## Tests:
 If you would like to run tests on the application, please follow the steps below:
-  *$insertsteps
-
+  ${data.steps}
 ## Questions
   If you have any questions, please feel free to contact me at ${data.email}
 

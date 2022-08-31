@@ -23,6 +23,11 @@ const questions = (answers) =>{
         },
         {
             type: 'input',
+            name: 'description',
+            message: 'Please provide a short summary of your project.'
+        },
+        {
+            type: 'input',
             name: 'github',
             message: 'Enter your GitHub Username',
             validate: gitHubUser => {
@@ -136,7 +141,9 @@ function init() {
             return generateMarkdown(answers);
         })
         .then(markdown => {
-            return writeToFile(markdown)})
+            //return console.log(markdown);
+            return writeToFile(markdown)
+        })
         .then(writeFileResponse=>{
             console.log(writeFileResponse)
         })
