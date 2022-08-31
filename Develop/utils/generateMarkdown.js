@@ -117,7 +117,7 @@ ${renderLicenseBadge(projectInfo.license)}
   * [Installation](##Installation)
   * [Usage](##Usage)
   * [Tests](##Tests)
-  * [Contributions andQuestions](##Contributions-and-Questions)
+  * [Contributions and Questions](##Contributions-and-Questions)
   * [License](##License)
 ## Installation:
   Please follow the steps below for installation:
