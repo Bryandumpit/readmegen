@@ -1,10 +1,10 @@
 
-# readme generator 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
+# ReadMeGenerator 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 ## Description:
-  This project generates a README.md file based on user inputs
+  This project generates a readme.md using user input.
 ## Table of Contents:
-  * [Project Title](#readme generator)
+  * [Project Title](#ReadMeGenerator)
   * [Description](#description)
   * [Installation](#installation)
   * [Usage](#usage)
@@ -14,18 +14,18 @@
     
 ## Installation:
   Please follow the steps below for installation:
-  * Step one: install
-  * Step two: install
+  * installation step one
+  * installation step two
 
 ## Usage:
   Please follow the steps below for usage:
-  * step one: usage
-  * step two: usage
+  * usage step one
+  * usage step two
 
 ## Tests:
   If you would like to run tests on the application, please follow the steps below:
-  * step one: test
-  * step two: test
+  * testing step one
+  * testing step two
 
 ## Contributions and Questions:
   If you would like to contribute or if you have any questions please visit my GitHub page or feel free to email me. Please see the links below:
@@ -34,6 +34,6 @@
 
 ## License:
   Please click the link to see details about your license
-  [Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)
+  [MIT License](https://choosealicense.com/licenses/mit/)
 
   
