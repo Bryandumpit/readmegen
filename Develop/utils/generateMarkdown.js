@@ -139,7 +139,7 @@ ${renderLicenseBadge(projectInfo.license)}
   ${testHandler(steps)}
 ## Contributions and Questions:
   If you would like to contribute or if you have any questions please visit my GitHub page or feel free to email me. Please see the links below:
-  * [My GitHub](https:github.com/${projectInfo.github}/)
+  * [My GitHub](https://github.com/${projectInfo.github}/)
   * [e-mail me at ${projectInfo.email}](mailto:${projectInfo.email})
 ${renderLicenseSection(projectInfo.license)}
   `;
