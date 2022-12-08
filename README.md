@@ -15,6 +15,7 @@ This application was built with:
 * [sample README.md generated](https://github.com/Bryandumpit/readmegen/tree/main/Develop/dist#readme)
 
 ## Preview
+[Walkthrough Video](https://drive.google.com/file/d/1-r44cnB8S59d6rVEO11pErFWm5jvsl8y/view)
 
 ![image](./Develop/images/readmegen-screenshot.PNG)
 
